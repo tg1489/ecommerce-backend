@@ -10,6 +10,12 @@
 
  • [Usage](#usage)
 
+ • [API Endpoints](#api-endpoints)
+
+ • [Data Structure](#data-structure)
+
+ • [Technologies Used](#technologies-used)
+
  • [Contributing](#contributing)
 
  • [Questions](#questions)
@@ -34,41 +40,40 @@ Perform CRUD operations on products, categories, and tags.
 
 ## API Endpoints
 
-GET /api/products: Retrieves all products.
-GET /api/products/:id: Retrieves a specific product by ID.
-POST /api/products: Creates a new product.
-PUT /api/products/:id: Updates an existing product.
-DELETE /api/products/:id: Deletes a product by ID.
+- GET /api/products: Retrieves all products.
+- GET /api/products/:id: Retrieves a specific product by ID.
+- POST /api/products: Creates a new product.
+- PUT /api/products/:id: Updates an existing product.
+- DELETE /api/products/:id: Deletes a product by ID.
 
 ## Data Structure
 
 The API uses the following data structure:
 
-### Product
+- Product:
+  - id (integer): The unique identifier of the product.
+  - product_name (string): The name of the product.
+  - price (decimal): The price of the product.
+  - stock (integer): The stock quantity of the product.
+  - category (object): The category associated with the product.
+  - tags (array): The tags associated with the product.
 
-id (integer): The unique identifier of the product.
-product_name (string): The name of the product.
-price (decimal): The price of the product.
-stock (integer): The stock quantity of the product.
-category (object): The category associated with the product.
-tags (array): The tags associated with the product.
+- Category:
 
-### Category
+  - id (integer): The unique identifier of the category.
+  - category_name (string): The name of the category.
 
-id (integer): The unique identifier of the category.
-category_name (string): The name of the category.
+- Tag:
 
-### Tag
-
-id (integer): The unique identifier of the tag.
-tag_name (string): The name of the tag.
+  - id (integer): The unique identifier of the tag.
+  - tag_name (string): The name of the tag.
 
 ## Technologies Used
 
-Node.js
-Express.js
-Sequelize (ORM)
-MySQL (Database)
+- Node.js
+- Express.js
+- Sequelize (ORM)
+- MySQL (Database)
 
 ## Contributing
 
