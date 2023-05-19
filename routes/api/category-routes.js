@@ -8,6 +8,7 @@ const { findOne } = require('../../models/Product');
 router.get('/', async (req, res) => {
 
   try {
+    
     const allCategories = await Category.findAll({
       include: [
         {
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
           attributes: ['product_name'],
         },
       ],
-      attributes: ['id', 'category_id', 'category_name'],
+      attributes: ['id', 'category_name'],
     });
   
     res.json(allCategories);
@@ -56,14 +57,20 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   
+  const transaction = await sequelize.transaction();
   try {
-    const newCategory = await Category.create({category_name: req.body.category_name})
+    const newCategory = await Category.create(
+      {category_name: req.body.category_name},
+      { transaction }
+    )
+    await transaction.commit();
     res.status(200).json(newCategory)
+    
   }
 
   catch (err) {
     console.error(err)
-    res.status(400).json(err)
+    res.status(400).json(err.errors)
   }
 });
 
