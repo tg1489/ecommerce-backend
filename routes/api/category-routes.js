@@ -5,6 +5,8 @@ const { findOne } = require('../../models/Product');
 
 // The `/api/categories` endpoint
 
+
+
 router.get('/', async (req, res) => {
 
   try {
@@ -57,14 +59,15 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   
-  const transaction = await sequelize.transaction();
+  
   try {
+
     const newCategory = await Category.create(
-      {category_name: req.body.category_name},
-      { transaction }
+      {category_name: req.body.category_name}
+     
     )
-    await transaction.commit();
-    res.status(200).json(newCategory)
+  
+    res.json(newCategory)
     
   }
 
